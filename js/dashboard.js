@@ -94,3 +94,30 @@ if (currentDate) {
 document.querySelectorAll('a[href="#"]').forEach(link => {
     link.addEventListener("click", e => e.preventDefault());
 });
+
+// ----------------------------------------------------------------
+// 5. Xử lý Giao diện Bóng gương (Glassmorphism Modal)
+// ----------------------------------------------------------------
+const workReportModal = document.getElementById("workReportModal");
+const openReportBtn = document.getElementById("openReportBtn");
+const closeReportBtn = document.getElementById("closeReportBtn");
+
+if (workReportModal && openReportBtn && closeReportBtn) {
+    // Mở Modal
+    openReportBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        workReportModal.classList.add("active");
+    });
+
+    // Đóng bằng nút X
+    closeReportBtn.addEventListener("click", () => {
+        workReportModal.classList.remove("active");
+    });
+
+    // Đóng khi click ra vùng mờ xung quanh
+    workReportModal.addEventListener("click", (e) => {
+        if (e.target === workReportModal) {
+            workReportModal.classList.remove("active");
+        }
+    });
+}
